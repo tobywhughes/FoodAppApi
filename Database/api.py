@@ -7,7 +7,12 @@ import json
 from flask import Flask, request
 app = Flask(__name__)
 
-@app.route('/restaurant', methods=['GET', 'POST', 'PUT', 'DELETE'])
+
+@app.route('/')
+def test():
+    return ""
+
+app.route('/restaurant', methods=['GET', 'POST', 'PUT', 'DELETE'])
 def restaurant():
     if request.method == 'GET':
         id = None
