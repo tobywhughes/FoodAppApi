@@ -50,7 +50,7 @@ def menu():
         return json.dumps(query_menu(id, rid))
     elif request.method == 'POST':
         f = request.form
-        insert_menu_item(f['name'], f['price'], f['rid'])
+        insert_menu_item(f['name'], f['price'], f['rid'], f['description'])
         return 'VALID'
     elif request.method == 'PUT':
         f = {key:value[0] for key,value in dict(request.form).items()}

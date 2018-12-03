@@ -10,9 +10,9 @@ def insert_restaurant(name, username, passhash, address, phone, gps_loc, connect
     cursor.execute(build_insert('restaurant', ['name', 'username', 'passhash', 'address', 'phone', 'gps_location']), execute_tuple)
 
 @db_connect
-def insert_menu_item(name, price, rid, connection, cursor):
+def insert_menu_item(name, price, rid, description, connection, cursor):
     execute_tuple = (name,price,rid)
-    cursor.execute(build_insert('menu_item', ['name', 'price', 'rid']), execute_tuple)
+    cursor.execute(build_insert('menu_item', ['name', 'price', 'rid', 'description']), execute_tuple)
 
 @db_connect
 def insert_profile(username, passhash, connection, cursor):
