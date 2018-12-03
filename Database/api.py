@@ -12,7 +12,7 @@ app = Flask(__name__)
 def test():
     return ""
 
-app.route('/restaurant', methods=['GET', 'POST', 'PUT', 'DELETE'])
+@app.route('/restaurant', methods=['GET', 'POST', 'PUT', 'DELETE'])
 def restaurant():
     if request.method == 'GET':
         id = None
@@ -153,4 +153,4 @@ def alert():
     return 'not implemented'
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host="0.0.0.0", port=80, debug=True)
