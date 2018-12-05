@@ -11,7 +11,7 @@ def insert_restaurant(name, username, passhash, address, phone, gps_loc, connect
 
 @db_connect
 def insert_menu_item(name, price, rid, description, connection, cursor):
-    execute_tuple = (name,price,rid)
+    execute_tuple = (name,price,rid, description)
     cursor.execute(build_insert('menu_item', ['name', 'price', 'rid', 'description']), execute_tuple)
 
 @db_connect

@@ -8,7 +8,9 @@ from db_query import *
 def update_restaurant(id, changes, connection, cursor):
     if id is None or changes is None:
         raise ValueError
-    cursor.execute(build_update('restaurant', changes.keys()), tuple(list(changes.values()) + [id]))
+    update_string = build_update('restaurant', changes.keys())
+    print(update_string)
+    cursor.execute(update_string, tuple(list(changes.values()) + [id]))
 
 @db_connect
 def update_menu_item(id, changes, connection, cursor):

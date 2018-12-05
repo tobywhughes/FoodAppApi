@@ -7,7 +7,8 @@ def build_select(table, wheres):
 def build_update(table, changes):
     s = "UPDATE " + table + " SET"
     for change in changes:
-        s += " " + change + " = ?"
+        s += " " + change + " = ?,"
+    s = s[:-1]
     s += " WHERE id = ?"
 
     return s
