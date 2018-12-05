@@ -16,9 +16,12 @@ def test():
 def restaurant():
     if request.method == 'GET':
         id = None
+        username = None
         if 'id' in request.args:
             id = request.args['id']
-        return json.dumps(query_restaurant(id))
+        if 'username' in request.args:
+            username = request.args['username']
+        return json.dumps(query_restaurant(id, username))
     elif request.method == 'POST':
         f = request.form
         insert_restaurant(f['name'], f['username'], f['passhash'], f['address'], f['phone'], f['gps_loc'])
@@ -78,7 +81,7 @@ def profile():
         return json.dumps(query_profile(id, username))
     elif request.method == 'POST':
         f = request.form
-        insert_profile(f['username'], f['passhash'])
+        insert_profile(f['username'], f['passhash'], f['email'], f['dob'])
         return 'VALID'
     elif request.method == 'DELETE':
         id = None

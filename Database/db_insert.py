@@ -15,9 +15,9 @@ def insert_menu_item(name, price, rid, description, connection, cursor):
     cursor.execute(build_insert('menu_item', ['name', 'price', 'rid', 'description']), execute_tuple)
 
 @db_connect
-def insert_profile(username, passhash, connection, cursor):
-    execute_tuple = (username,passhash)
-    cursor.execute(build_insert('profile', ['username', 'passhash']), execute_tuple)
+def insert_profile(username, passhash, email, dob, connection, cursor):
+    execute_tuple = (username,passhash, email, dob)
+    cursor.execute(build_insert('profile', ['username', 'passhash', 'email', 'dob']), execute_tuple)
     
 @db_connect
 def insert_order(status, detail, rid, pid, mids, connection, cursor):

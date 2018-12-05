@@ -3,13 +3,21 @@ from connect import db_connect
 from sql import *
 
 @db_connect
-def query_restaurant(id, connection, cursor):
-    if id is not None:
-        execute_string = build_select('restaurant', ['id'])
-        cursor.execute(execute_string, (id,))
-    else:
+def query_restaurant(id, username, connection, cursor):
+    if id is None and username is None:
         execute_string = build_select('restaurant', [])
         cursor.execute(execute_string)
+    else:
+        n_ = []
+        t_ = []
+        if id is not None:
+            n_.append('id')
+            t_.append(id)
+        if username is not None:
+            n_.append('username')
+            t_.append(username)
+        execute_string = build_select('restaurant', n_)
+        cursor.execute(execute_string, t_)
     return create_return_dict(cursor)
 
 @db_connect
